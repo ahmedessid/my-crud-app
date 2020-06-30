@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PeopleListComponent implements OnInit {
 
-  constructor() { }
+  peopleList = [];
+
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.getAllUsers().subscribe(
+      result=>{
+        this.peopleList=result;
+      },
+      error=>{
+        console.log(error);
+      }
+    );
   }
 
+  delete(item) {
+    let index = this.peopleList.indexOf(item);
+    if (index !== -1) {
+      this.peopleList.splice(index, 1);
+    }
+    this.userService.deleteUser(item._id).subscribe(
+      result=>{
+        console.log(result)
+      },
+      error=>{
+        console.log(error);
+      }
+    );
+  }
 }

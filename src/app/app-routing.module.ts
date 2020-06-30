@@ -1,3 +1,7 @@
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { Page404Component } from './page404/page404.component';
+import { TestComponent } from './test/test.component';
 import { PeopleListComponent } from './people-list/people-list.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -16,12 +20,28 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
+    path:'add-user',
+    component:AddUserComponent
+  },
+  {
+    path:'update-user/:id',
+    component:UpdateUserComponent
+  },
+  {
     path:'register',
     component:RegisterComponent
   },
   {
     path:'people-list',
     component:PeopleListComponent
+  },
+  {
+    path:'test',
+    component:TestComponent
+  },
+  {
+    path:'**',
+    component:Page404Component
   },
 ];
 

@@ -1,0 +1,12 @@
+<div class="container">
+    <p>Hello {{name}}</p>
+    <!-- <img [src]="imgUrl" alt="formalab" width="100px"> -->
+    <button (click)="hello(name)" class="btn btn-primary ml-2">Alert</button>
+    <hr>
+    <ul *ngFor="let item of bookList">
+        <li>{{item}}</li>
+    </ul>
+    <div *ngIf="bookList.length === 0" class="alert alert-warning">
+        No books here!
+    </div>
+</div>

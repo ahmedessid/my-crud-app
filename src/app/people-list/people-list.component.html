@@ -1,1 +1,32 @@
-<p>people-list works!</p>
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <h2>People List</h2>
+    <hr>
+    <button class="btn btn-primary mb-3" [routerLink]="['/add-user']">Add</button>
+    <div *ngIf="peopleList.length === 0" class="alert alert-warning">
+        No books here!
+    </div>
+    <table *ngIf="peopleList.length !==0" class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Phone</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of peopleList; let i=index">
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{item.firstname}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.phone}}</td>
+                <td><button (click)="update(item)" class="btn btn-warning mr-2" [routerLink]="['/update-user', item._id]">Update</button><button
+                        (click)="delete(item)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-footer></app-footer>
